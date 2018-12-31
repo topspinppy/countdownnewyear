@@ -33,7 +33,7 @@ class App extends Component {
           <p>
             <Countdown 
               onComplete={this.handleComplete}
-              date={Date.now()+5000} 
+              date={new Date("Jan 1, 2019 00:00:00").getTime()} 
               renderer={this.renderer}
             />
           </p>
