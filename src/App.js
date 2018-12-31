@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import Countdown from 'react-countdown-now';
 import './App.css';
+import logo from './logo.svg';
+import kslogo from './kslogo.svg';
 
 class App extends Component {
   state = {
-    img: 'https://www.knowledgesharing.me/static/media/ks_logo.c9df07af.svg',
+    completed: true,
   }
   renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-      return <span> Happy New Year !</span>;
+      return <span><h1><b>สวัสดีปีใหม่ 2562 ขอให้ทุกคนมีความสุข <br /> สุขภาพแข็งแรง <br/> และ เจริญก้าวหน้ายิ่งขึ้นไป </b></h1></span>; 
     } else {
       return (
         <ul>
@@ -22,18 +24,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="pyro">
+            <div className="before"></div>
+            <div className="after"></div>
+        </div>
         <header className="App-header">
-          <h1>Happy New Year 2019</h1>
+          <h1> Happy New Year 2019 | ส่งท้ายปีเก่า ต้อนรับปีใหม่ </h1>
           <p>
             <Countdown 
-              date={new Date("Jan 1, 2019 00:00:00").getTime()} 
+              onComplete={this.handleComplete}
+              date={Date.now()+5000} 
               renderer={this.renderer}
             />
           </p>
+          <div>
+            Made With <img src={logo} width="80px" style={{ marginBottom: '-7px' }} /> By <img src={kslogo} width="120px" className="logo-app" />
+          </div>
         </header>
-        <div>
-          <img src="https://www.knowledgesharing.me/static/media/ks_logo.c9df07af.svg" />
-        </div>
       </div>
     );
   }
